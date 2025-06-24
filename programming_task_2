@@ -1,0 +1,73 @@
+"""
+Guessing Number Game.
+This program asks a user to guess a randomly generated number (between 1 and 100).
+
+Example Use-case:
+INPUT: 5
+(random_int = 41)
+OUTPUT: You guessed too low!
+
+The program does this by...
+    Step 1. Retrieving and validating the user's guessed integer
+    Step 2. Generating the random integer
+    Step 3. Comparing the two integers, giving feedback on the results
+"""
+
+from random import randint
+
+def retrieve_user_input():
+    '''
+    Retrieves and validates the user's guessed integer.
+
+    Returns
+    -------
+    user_integer (int) : The user guessed integer.
+    '''
+
+    valid = False
+
+    while not valid:
+        user_guess = input("Input your guess: ")
+
+        try:
+            # Attempts to convert the user guess to an integer, thus validating the input.
+            user_integer = int(user_guess)
+
+            # Checks that the users guess was between 1 and 100.
+            if 1 <= user_integer <= 100:
+                valid = True
+            else:
+                print("Integer input was not correct. Input should be an integer between 1 and 100.")
+        except:
+            print("Invalid input type. Input should be an integer between 1 and 100.")
+
+    return user_integer
+
+def compare_integers(user_guess: int, random_int: int) -> str:
+    '''
+
+    Parameters
+    ----------
+    user_guess (int) : The user guessed integer.
+    random_int (int) : The random integer.
+
+    Returns
+    -------
+    A string notifying the user that the guess was correct, too high or too low.
+    '''
+
+    # Returns a string, depending on how the two integers compare.
+    if user_guess > random_int:
+        return "You guessed too high!"
+    elif user_guess < random_int:
+        return "You guessed too low!"
+    else:
+        return "Correct!"
+
+user_guess = retrieve_user_input()
+
+# Generates a random integer between 1 to 100 (inclusive).
+random_int = randint(1,100)
+
+integer_comparison = compare_integers(user_guess, random_int)
+print(integer_comparison)
