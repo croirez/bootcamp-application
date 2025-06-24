@@ -1,6 +1,7 @@
 '''
 This program takes a list of integers and joins digits side-by-side, into one single number.
 
+Example Use-case:
 INPUT: [8, 3, 5, 1]
 OUTPUT: 8351
 
@@ -8,23 +9,25 @@ The program does this by...
     Step 1. Loops through each digit in a list.
     Step 2. Each digit is added to 10 times the current value of the variable, 'final_integer'.
             This allows for the digit to be placed into the correct place value.
-    Step 3. The 'joined' final integer is then output to the console, along with its class type to confirm it is an integer.
+    Step 3. The 'joined' final integer is then output to the console.
 '''
 
+def join_integer_list(list_ints: list[int]) -> list[int]:
+    # Variable to store the final, joined integer value. Initialised as 0.
+    final_integer = 0
+
+    # Loops through each integer in the list.
+    for integer in list_ints:
+        # Multiplies the existing 'final_integer' value by 10 to move the existing number over by one place value. Adds the next integer to the end.
+        final_integer = (final_integer * 10) + integer
+
+    # Returns the variable 'final_integer'
+    return final_integer
+
+
 # A list containing various integer digits.
-list_ints = [9,3,4,6] # <- Try testing it by changing the inputs!
+list_ints = [1, 2, 3, 4, 5]  # <- Try testing it by changing the inputs!
 
-# Variable to store the final, joined integer value. Initialised as 0.
-final_integer = 0
+final_integer = join_integer_list(list_ints)
 
-# Loops through each integer in the list.
-for integer in list_ints:
-    # Multiplies the existing 'final_integer' value by 10 to move the existing number over by one place value. Adds the next integer to the end.
-    final_integer = (final_integer * 10) + integer
-
-# Stores the class of the 'final_integer' variable.
-final_type = type(final_integer)
-
-# Prints out both the variable and type of 'final_integer' 
 print(final_integer)
-print(final_type)
